@@ -16,7 +16,7 @@
     ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚══════╝╚═╝  ╚═╝╚═════╝
 ```
 # YOLACT USER GUIDE
-```
+
 # 1. Conda 환경 생성 및 활성화
 conda create -n yolact python=3.7
 conda activate yolact
@@ -71,7 +71,7 @@ python eval.py \
   --image=data/test.jpg:output_image.png
 
 # 결과는 output_image.png로 저장됨
-```
+
 
 A simple, fully convolutional model for real-time instance segmentation. This is the code for our papers:
  - [YOLACT: Real-time Instance Segmentation](https://arxiv.org/abs/1904.02689)
