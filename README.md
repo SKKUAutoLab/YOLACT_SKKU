@@ -42,6 +42,20 @@ mkdir weights
 # 아래 링크에서 Mobilenetv2 가중치를 다운로드하여 weights 폴더에 저장
 # 👉 https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX
 
+# data/config.py 파일 안에 내용을 추가하여 데이터셋 설정
+my_custom_dataset = dataset_base.copy({
+    'name': 'My Dataset',
+
+    'train_images': 'path_to_training_images',
+    'train_info':   'path_to_training_annotation',
+
+    'valid_images': 'path_to_validation_images',
+    'valid_info':   'path_to_validation_annotation',
+
+    'has_gt': True,
+    'class_names': ('my_class_id_1', 'my_class_id_2', 'my_class_id_3', ...)
+})
+
 # 7. 모델 학습 시작
 python train.py --config=yolact_mobilenetv2_custom_lane_config
 
