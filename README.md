@@ -38,10 +38,10 @@
 > `mkdir weights`  
 >
 > **6. 사전 학습된 모델 가중치 다운로드**  
-> [📥 Mobilenetv2 가중치 다운로드](https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX) → `weights/` 폴더에 저장  
+> [Mobilenetv2 가중치 다운로드](https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX) → `weights/` 폴더에 저장  
 >
 > **7. 데이터셋 설정 (`data/config.py` 내부)**  
-> [📦 예시 데이터셋 다운로드](https://drive.google.com/uc?id=198FVgAsB8vnsHRc6D9hG5T2fTm9RaPcH)  
+> [예시 데이터셋 다운로드](https://drive.google.com/uc?id=198FVgAsB8vnsHRc6D9hG5T2fTm9RaPcH)  
 > ```python  
 > my_custom_dataset = dataset_base.copy({
 >     'name': 'My Dataset',
