@@ -27,8 +27,8 @@ pip install -r requirements.txt
 # 3. PyTorch 설치
 # 아래 사이트에서 본인의 CUDA 버전에 맞는 PyTorch를 선택하여 설치하세요.
 # 👉 https://pytorch.org/get-started/previous-versions/
-# 예: CUDA 10.2 사용 시
-pip install torch==1.7.1 torchvision==0.8.2
+# 예: CUDA 11.2 사용 시(버전 꼭 일치 시키지 않아도 됨)
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
 
 # 4. 설치 확인
 python  # 인터프리터 실행 후 아래 코드 입력
