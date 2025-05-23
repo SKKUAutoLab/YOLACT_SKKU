@@ -26,7 +26,7 @@
 > `pip install -r requirements.txt`  
 >
 > **3. PyTorch 설치**  
-> 👉 [이 링크](https://pytorch.org/get-started/previous-versions/)에서 CUDA 버전에 맞는 PyTorch를 선택  
+> [Pytorch 공식 홈페이지](https://pytorch.org/get-started/previous-versions/)에서 CUDA 버전에 맞는 PyTorch를 선택  
 > 예: `conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch`  
 >
 > **4. 설치 확인**  
