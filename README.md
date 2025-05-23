@@ -255,4 +255,4 @@ For YOLACT++, please cite
 
 
 # Contact
-For questions about our paper or code, please contact [Daniel Bolya](mailto:dbolya@ucdavis.edu).
+For questions about our paper or code, please contact [Automationlab](mailto:rbgus7080@g.skku.edu).
