@@ -42,7 +42,7 @@ mkdir weights
 # [Mobilenetv2 가중치](https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX)를 다운로드하여 weights 폴더에 저장
 
 # data/config.py 파일 안에 내용을 추가하여 데이터셋 설정
-# [예시 데이터셋 다운로드](https://drive.google.com/uc?id=198FVgAsB8vnsHRc6D9hG5T2fTm9RaPcH)
+[예시 데이터셋 다운로드](https://drive.google.com/uc?id=198FVgAsB8vnsHRc6D9hG5T2fTm9RaPcH)
 my_custom_dataset = dataset_base.copy({
     'name': 'My Dataset',
 
