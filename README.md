@@ -16,6 +16,49 @@
     ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚══════╝╚═╝  ╚═╝╚═════╝
 ```
 
+```
+# 1. Conda 환경 생성 및 활성화
+conda create -n yolact python=3.7
+conda activate yolact
+
+# 2. 필수 패키지 설치
+pip install -r requirements.txt
+
+# 3. PyTorch 설치
+# 아래 사이트에서 본인의 CUDA 버전에 맞는 PyTorch를 선택하여 설치하세요.
+# 👉 https://pytorch.org/get-started/previous-versions/
+# 예: CUDA 10.2 사용 시
+pip install torch==1.7.1 torchvision==0.8.2
+
+# 4. 설치 확인
+python  # 인터프리터 실행 후 아래 코드 입력
+>>> import torch
+>>> torch.cuda.is_available()  # True가 출력되면 CUDA 정상 인식
+
+# 5. 가중치 저장 폴더 생성
+mkdir weights
+
+# 6. 사전 학습된 모델 가중치 다운로드
+# 아래 링크에서 Mobilenetv2 가중치를 다운로드하여 weights 폴더에 저장
+# 👉 https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX
+
+# 7. 모델 학습 시작
+python train.py --config=yolact_mobilenetv2_custom_lane_config
+
+# 8. 학습 중 로그를 보며 중간에 성능이 만족스럽다면 Ctrl + C로 종료
+
+# 9. 학습된 모델은 weights 폴더에 epochs 기준으로 저장됨
+
+# 10. 모델 추론 (test.jpg 필요)
+python eval.py \
+  --trained_model=weights/<가중치_파일명>.pth \
+  --score_threshold=0.15 \
+  --top_k=15 \
+  --image=data/test.jpg:output_image.png
+
+# 결과는 output_image.png로 저장됨
+```
+
 A simple, fully convolutional model for real-time instance segmentation. This is the code for our papers:
  - [YOLACT: Real-time Instance Segmentation](https://arxiv.org/abs/1904.02689)
  - [YOLACT++: Better Real-time Instance Segmentation](https://arxiv.org/abs/1912.06218)
@@ -88,6 +131,16 @@ YOLACT++ models (released on December 16th, 2019):
 | 550        | Resnet101-FPN | 27.3 | 34.6 | [yolact_plus_base_54_800000.pth](https://drive.google.com/file/d/15id0Qq5eqRbkD-N3ZjDZXdCvRyIaHpFB/view?usp=sharing) | [Mirror](https://ucdavis365-my.sharepoint.com/:u:/g/personal/yongjaelee_ucdavis_edu/EVQ62sF0SrJPrl_68onyHF8BpG7c05A8PavV4a849sZgEA)
 
 To evalute the model, put the corresponding weights file in the `./weights` directory and run one of the following commands. The name of each config is everything before the numbers in the file name (e.g., `yolact_base` for `yolact_base_54_800000.pth`).
+
+---
+
+## 모델 가중치 다운로드
+
+사전 학습된 모델 가중치를 아래 링크에서 다운로드 받을 수 있습니다:
+
+[**Mobilenetv2모델 가중치 다운로드 모델 가중치 다운로드**](https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX)
+
+---
 ## Quantitative Results on COCO
 ```Shell
 # Quantitatively evaluate a trained model on the entire validation set. Make sure you have COCO downloaded as above.
