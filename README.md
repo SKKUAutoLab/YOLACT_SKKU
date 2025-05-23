@@ -16,61 +16,60 @@
     ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚══════╝╚═╝  ╚═╝╚═════╝
 ```
 # YOLACT USER GUIDE
-
-# 1. Conda 환경 생성 및 활성화
-conda create -n yolact python=3.7
-conda activate yolact
-
-# 2. 필수 패키지 설치
-pip install -r requirements.txt
-
-# 3. PyTorch 설치
-# 아래 사이트에서 본인의 CUDA 버전에 맞는 PyTorch를 선택하여 설치하세요.
-# 👉 https://pytorch.org/get-started/previous-versions/
-# 예: CUDA 11.2 사용 시(버전 꼭 일치 시키지 않아도 됨)
-conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
-
-# 4. 설치 확인
-python  # 인터프리터 실행 후 아래 코드 입력
->>> import torch
->>> torch.cuda.is_available()  # True가 출력되면 CUDA 정상 인식
-
-# 5. 가중치 저장 폴더 생성
-mkdir weights
-
-# 6. 사전 학습된 모델 가중치 다운로드
-# [Mobilenetv2 가중치](https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX)를 다운로드하여 weights 폴더에 저장
-
-# data/config.py 파일 안에 내용을 추가하여 데이터셋 설정
-[예시 데이터셋 다운로드](https://drive.google.com/uc?id=198FVgAsB8vnsHRc6D9hG5T2fTm9RaPcH)
-my_custom_dataset = dataset_base.copy({
-    'name': 'My Dataset',
-
-    'train_images': 'path_to_training_images',
-    'train_info':   'path_to_training_annotation',
-
-    'valid_images': 'path_to_validation_images',
-    'valid_info':   'path_to_validation_annotation',
-
-    'has_gt': True,
-    'class_names': ('my_class_id_1', 'my_class_id_2', 'my_class_id_3', ...)
-})
-
-# 7. 모델 학습 시작
-python train.py --config=yolact_mobilenetv2_custom_lane_config
-
-# 8. 학습 중 로그를 보며 중간에 성능이 만족스럽다면 Ctrl + C로 종료
-
-# 9. 학습된 모델은 weights 폴더에 epochs 기준으로 저장됨
-
-# 10. 모델 추론 (test.jpg 필요)
-python eval.py \
-  --trained_model=weights/<가중치_파일명>.pth \
-  --score_threshold=0.15 \
-  --top_k=15 \
-  --image=data/test.jpg:output_image.png
-
-# 결과는 output_image.png로 저장됨
+> ### 🛠️ YOLACT 설치 및 실행 가이드
+>
+> **1. Conda 환경 생성 및 활성화**  
+> `conda create -n yolact python=3.7`  
+> `conda activate yolact`  
+>
+> **2. 필수 패키지 설치**  
+> `pip install -r requirements.txt`  
+>
+> **3. PyTorch 설치**  
+> 👉 [이 링크](https://pytorch.org/get-started/previous-versions/)에서 CUDA 버전에 맞는 PyTorch를 선택  
+> 예: `conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch`  
+>
+> **4. 설치 확인**  
+> Python 실행 후:  
+> `>>> import torch`  
+> `>>> torch.cuda.is_available()` → `True`면 OK  
+>
+> **5. 가중치 저장 폴더 생성**  
+> `mkdir weights`  
+>
+> **6. 사전 학습된 모델 가중치 다운로드**  
+> [📥 Mobilenetv2 가중치 다운로드](https://drive.google.com/uc?id=1AfJCAsK34KT-W6Schg6vzt6lHLMMhrhX) → `weights/` 폴더에 저장  
+>
+> **7. 데이터셋 설정 (`data/config.py` 내부)**  
+> [📦 예시 데이터셋 다운로드](https://drive.google.com/uc?id=198FVgAsB8vnsHRc6D9hG5T2fTm9RaPcH)  
+> ```python  
+> my_custom_dataset = dataset_base.copy({
+>     'name': 'My Dataset',
+>     'train_images': 'path_to_training_images',
+>     'train_info':   'path_to_training_annotation',
+>     'valid_images': 'path_to_validation_images',
+>     'valid_info':   'path_to_validation_annotation',
+>     'has_gt': True,
+>     'class_names': ('my_class_id_1', 'my_class_id_2', 'my_class_id_3', ...)
+> })
+> ```  
+>
+> **8. 모델 학습 시작**  
+> `python train.py --config=yolact_mobilenetv2_custom_lane_config`  
+>
+> **9. 학습 도중 성능 확인 → 만족하면 Ctrl+C로 중단 가능**  
+>
+> **10. 학습된 모델은 `weights/` 폴더에 저장됨**  
+>
+> **11. 모델 추론 (test.jpg 필요)**  
+> ```bash
+> python eval.py \
+>   --trained_model=weights/<가중치_파일명>.pth \
+>   --score_threshold=0.15 \
+>   --top_k=15 \
+>   --image=data/test.jpg:output_image.png
+> ```
+> 결과는 `output_image.png`로 저장됨 ✅
 
 
 A simple, fully convolutional model for real-time instance segmentation. This is the code for our papers:
