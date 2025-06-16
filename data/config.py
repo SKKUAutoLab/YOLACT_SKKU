@@ -865,52 +865,10 @@ yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
 })
 ############################# custom lane v1 #############################
 yolact_resnet50_custom_lane_config = yolact_resnet50_config.copy({
-    'name': 'yolact_resnet50_custom_lane',
-    # Dataset stuff
-    'dataset': Lane_dataset,
-    'num_classes': len(Lane_dataset.class_names) + 1,
-
-    # Image Size
-    #'max_size': 640,
-})
-###########################################################################
-
-############################# custom lane v2 #############################
-yolact_resnet50_custom_lane_configv2 = yolact_resnet50_config.copy({
-    'name': 'yolact_resnet50_custom_lane',
-    # Dataset stuff
-    'dataset': Lane_datasetv3,
-    'num_classes': len(Lane_dataset.class_names) + 1,
-
-    # Image Size
-    'max_size': 400,
-})
-###########################################################################
-
-############################# custom lane mobilenet #############################
-yolact_mobilenetv2_custom_lane_config = yolact_resnet50_config.copy({
-    'name': 'yolact_mobilenetv2_custom_lane',
-    # Dataset stuff
-    'dataset': Lane_datasetv3,
-    'backbone': mobilenetv2_backbone.copy(),
-    'use_semantic_segmentation_loss': True,
-    'num_classes': len(Lane_dataset.class_names) + 1,
-
-    # Image Size
-    'max_size': 224,
-})
 
 
-yolact_mobilenetv2_custom_lane_im224_config = yolact_resnet50_im224_config.copy({
-    'name': 'yolact_mobilenetv2_custom_lane',
-    # Dataset stuff
-    'dataset': Lane_datasetv3,
-    'backbone': mobilenetv2_backbone.copy(),
-    'use_semantic_segmentation_loss': True,
-    'num_classes': len(Lane_dataset.class_names) + 1,
 
-    # Image Size
-    #'max_size': 224,
+          
 })
 ###########################################################################
 
