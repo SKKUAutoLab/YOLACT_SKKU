@@ -864,11 +864,16 @@ yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
     })
 })
 ############################# custom lane v1 #############################
-yolact_resnet50_custom_lane_config = yolact_resnet50_config.copy({
+yolact_custom_lane_config = yolact_resnet50_config.copy({
+    'name': '',
+    # Dataset stuff
+    'dataset': ,
+    'backbone': ,
+    'use_semantic_segmentation_loss': True,
+    'num_classes': len(Lane_dataset.class_names) + 1,
 
-
-
-          
+    # Image Size
+    'max_size': 224,
 })
 ###########################################################################
 
