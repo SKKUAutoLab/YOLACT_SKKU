@@ -55,7 +55,7 @@
 > ```  
 >
 > **8. 모델 학습 시작**  
-> `python train.py --config=yolact_mobilenetv2_custom_lane_config`  
+> `python train.py --config=<본인이 원하는 config>`  
 >
 > **9. 학습 도중 성능 확인 → 만족하면 Ctrl+C로 중단 가능**  
 >
