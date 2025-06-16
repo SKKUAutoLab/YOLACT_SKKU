@@ -54,6 +54,20 @@
 > })
 > ```  
 >
+>  ```python  
+> yolact_custom_lane_config = yolact_resnet50_config.copy({
+>    'name': 'yolact_custom_lane_config',
+>    # Dataset stuff
+>     'dataset': 본인의 custom dataset,
+>     'backbone': 본인이 원하는 backbone,
+>     'use_semantic_segmentation_loss': True,
+>     'num_classes': len(Lane_dataset.class_names) + 1,
+> 
+>     # Image Size
+>    'max_size': 본인이 원하는 입력 이미지 사이즈,
+> })
+> ```  
+> 
 > **8. 모델 학습 시작**  
 > `python train.py --config=<본인이 원하는 config>`  
 >
